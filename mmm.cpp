@@ -37,7 +37,10 @@ int main()
 	cout << "\nb: "; cin >> b;//3
 	cout << "\nKt: "; cin >> Kt;//2
 	cout << "\nKe: "; cin >> Ke;//2
-	cout << "\nPobudzenie: \n1) Prostokatny okresowy\n2) Sinusoida \n3) Prostokatny skonczony \n4) Trojatny skonczony \n5) Trojkatny okresowy\n"; cin >> pobudzenie;
+		do
+	{
+		cout << "\nPobudzenie: \n1) Prostokatny okresowy\n2) Sinusoida \n3) Prostokatny skonczony \n4) Trojatny skonczony \n5) Trojkatny okresowy\n"; cin >> pobudzenie;
+	} while (pobudzenie < 0 || pobudzenie > 5);
 
 	int i, j, total;
 	double a1, a0, b0_theta, w, b0_i, b1_i, t1, t2;
