@@ -1,4 +1,3 @@
-﻿
 #include <iostream>
 #include <fstream>
 #include <cmath>
@@ -29,12 +28,12 @@ int main()
 	//wprowadzenie zmiennych ukladu
 
 	cout << "Podaj zmienne ukladu:\n";
-	cout << "R: "; cin >> R;//10
-	cout << "\nL: "; cin >> L;//5
-	cout << "\nJ: "; cin >> J;//2
-	cout << "\nb: "; cin >> b;//3
-	cout << "\nKt: "; cin >> Kt;//2
-	cout << "\nKe: "; cin >> Ke;//2
+	cout << "R: "; cin >> R;
+	cout << "\nL: "; cin >> L;
+	cout << "\nJ: "; cin >> J;
+	cout << "\nb: "; cin >> b;
+	cout << "\nKt: "; cin >> Kt;
+	cout << "\nKe: "; cin >> Ke;
 
 		do
 	{
@@ -43,11 +42,11 @@ int main()
 
 	int i, j, total;
 	double a1, a0, b0_theta, w, b0_i, b1_i, t1, t2;
-	a1 = (b / J + R / L);//1,5+2=3,5
-	a0 = ((Kt * Ke + R * b) / (L * J));//3,4
+	a1 = (b / J + R / L);
+	a0 = ((Kt * Ke + R * b) / (L * J));
 	b0_theta = (Kt / (L * J));
-	b0_i = (b / (L * J));//0.3
-	b1_i = (1 / L);//0.2
+	b0_i = (b / (L * J));
+	b1_i = (1 / L);
 	total = sizeof(u) / sizeof(u[0]); // rozmiar wektorów danych
 	w = 2.0 * PI * L1 / T; // częstotliwość sinusoidy
 	cout <<"\nPodaj amplitude sygnalu: "; cin >> M;
@@ -56,7 +55,7 @@ int main()
 		cout << "\nPodaj liczbę okresów: "; cin >> L1;
 		for (i = 0; i < total; i++) 
 		{
-			if ((i * h) - floor(i * h / (T / L1)) * T / L1 < (T / L1) / 2) // sprawdza który to okres zaokrąglając w dół mnoży razy okres i sprawdza czy po odjęciu tego od obecnego czasu czy mieści się w obszarze wartości pozytywnych 
+			if ((i * h) - floor(i * h / (T / L1)) * T / L1 < (T / L1) / 2) 
 			{
 				u[i] = M;
 			}
@@ -159,24 +158,24 @@ int main()
 		break;
 	case 5://Trójkątny okresowy
 		cout << "\nPodaj liczbę okresów: "; cin >> L1;
-		double period = T / L1; // period of the triangular wave
-		double half_period = period / 2; // half period of the triangular wave
-		double slope = 2 * M / half_period; // slope of the triangular wave
+		double period = T / L1; 
+		double half_period = period / 2; 
+		double slope = 2 * M / half_period; 
 		for (i = 0; i < total; i++)
 		{
 			double t = i * h;
 			double time_in_period = t - floor(t / period) * period;
 			if (time_in_period < half_period) {
-				u[i] = slope * time_in_period - M; // increasing part
+				u[i] = slope * time_in_period - M; 
 			}
 			else {
-				u[i] = -slope * (time_in_period - half_period) + M; // decreasing part
+				u[i] = -slope * (time_in_period - half_period) + M; 
 			}
 			if (i == 0) {
 				u1p[i] = 0;
 			}
 			else {
-				if ((i * h) - floor(i * h / (T / L1)) * T / L1 < (T / L1) / 2) // sprawdza który to okres zaokrąglając w dół mnoży razy okres i sprawdza czy po odjęciu tego od obecnego czasu czy mieści się w obszarze wartości pozytywnych 
+				if ((i * h) - floor(i * h / (T / L1)) * T / L1 < (T / L1) / 2)  
 				{
 					u1p[i] = M;
 				}
