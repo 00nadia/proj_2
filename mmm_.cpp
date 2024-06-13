@@ -72,7 +72,7 @@ int main()
 		}
 		break;
 	case 2://Sinusoida
-		cout << "\nPodaj liczbę okresow: "; cin >> L1;
+		cout << "\nPodaj dlugosc okresu: "; cin >> L1;
 		w=2*PI/L1;//czestotliwosc sin
 		for (i = 0; i < total; i++) // sygnał wejściowy i jego pochodne
 		{
