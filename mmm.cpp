@@ -9,7 +9,6 @@ using namespace std;
 #define h 0.001 // krok obliczeń
 #define T 10.0 // całkowity czas symulacji – przedział [0 , T]
 #define L1 2.5 // liczba okresów sygnału sinus w przedziale T
-#define M 8.0 // amplituda sygnału sinus
 #define PI 3.14159265 // liczba PI
 // pomocniczy typ – kolejne bajty danej ’double’
 typedef union { char c[sizeof(double)]; double d; } Box;
@@ -27,7 +26,7 @@ Box z[(int)(1.0 * T / h) + 1]; // zmienna: pojedyncza wartość sygnału (u lub 
 int main()
 {
 	double R, L, J, b, Kt, Ke;
-	int pobudzenie;
+	int pobudzenie, M;
 	//wprowadzenie zmiennych ukladu
 
 	cout << "Podaj zmienne ukladu:\n";
@@ -50,7 +49,8 @@ int main()
 	b1_i = (1 / L);
 	total = sizeof(u) / sizeof(u[0]); // rozmiar wektorów danych
 	w = 2.0 * PI * L1 / T; // częstotliwość sinusoidy
-
+	cout << "Podaj amplitude sygnalu: \n";
+	cin >> M;
 	switch (pobudzenie) {// sygnały wejściowe
 	case 1://Prostokątny okresowy
 		for (i = 0; i < total; i++) 
