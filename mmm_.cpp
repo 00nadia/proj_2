@@ -1,4 +1,8 @@
-﻿#include <iostream>
+﻿//Autorzy: 
+//Nadia Tyburska 193329 ACiR 1 
+//Hubert Chrubczyński 193604 ACiR 1 
+
+#include <iostream>
 #include <fstream>
 #include <cmath>
 #include <conio.h>
