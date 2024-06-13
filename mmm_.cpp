@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>
 #include <cmath>
 #include <conio.h>
@@ -48,14 +48,13 @@ int main()
 	b0_i = (b / (L * J));
 	b1_i = (1 / L);
 	total = sizeof(u) / sizeof(u[0]); // rozmiar wektorów danych
-	w = 2.0 * PI * L1 / T; // częstotliwość sinusoidy
 	cout <<"\nPodaj amplitude sygnalu: "; cin >> M;
 	switch (pobudzenie) {// sygnały wejściowe
 	case 1://Prostokątny okresowy
-		cout << "\nPodaj liczbę okresow: "; cin >> L1;
+		cout << "\nPodaj dlugosc okresu: "; cin >> L1;
 		for (i = 0; i < total; i++) 
 		{
-			if ((i * h) - floor(i * h / (T / L1)) * T / L1 < (T / L1) / 2) 
+			if ((i * h) - floor(i * h / (L1)) * L1 < (L1) / 2) 
 			{
 				u[i] = M;
 			}
@@ -74,6 +73,7 @@ int main()
 		break;
 	case 2://Sinusoida
 		cout << "\nPodaj liczbę okresow: "; cin >> L1;
+		w=2*PI/L1;//czestotliwosc sin
 		for (i = 0; i < total; i++) // sygnał wejściowy i jego pochodne
 		{
 			u[i] = M * sin(w * i * h); // sygnał wejściowy: u=M*sin(w*t) , t=i*
@@ -157,8 +157,9 @@ int main()
 		}
 		break;
 	case 5://Trójkątny okresowy
-		cout << "\nPodaj liczbę okresow: "; cin >> L1;
-		double period = T / L1; 
+		double period;
+		cout << "\nPodaj dlugosc okresu: "; cin >> period;
+		 
 		double half_period = period / 2; 
 		double slope = 2 * M / half_period; 
 		for (i = 0; i < total; i++)
