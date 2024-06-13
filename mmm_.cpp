@@ -52,7 +52,7 @@ int main()
 	cout <<"\nPodaj amplitude sygnalu: "; cin >> M;
 	switch (pobudzenie) {// sygnały wejściowe
 	case 1://Prostokątny okresowy
-		cout << "\nPodaj liczbę okresów: "; cin >> L1;
+		cout << "\nPodaj liczbę okresow: "; cin >> L1;
 		for (i = 0; i < total; i++) 
 		{
 			if ((i * h) - floor(i * h / (T / L1)) * T / L1 < (T / L1) / 2) 
@@ -73,7 +73,7 @@ int main()
 		}
 		break;
 	case 2://Sinusoida
-		cout << "\nPodaj liczbę okresów: "; cin >> L1;
+		cout << "\nPodaj liczbę okresow: "; cin >> L1;
 		for (i = 0; i < total; i++) // sygnał wejściowy i jego pochodne
 		{
 			u[i] = M * sin(w * i * h); // sygnał wejściowy: u=M*sin(w*t) , t=i*
@@ -157,7 +157,7 @@ int main()
 		}
 		break;
 	case 5://Trójkątny okresowy
-		cout << "\nPodaj liczbę okresów: "; cin >> L1;
+		cout << "\nPodaj liczbę okresow: "; cin >> L1;
 		double period = T / L1; 
 		double half_period = period / 2; 
 		double slope = 2 * M / half_period; 
