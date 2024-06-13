@@ -7,12 +7,11 @@
 using namespace std;
 // stałe w programie
 #define h 0.001 // krok obliczeń
-#define T 10.0 // całkowity czas symulacji – przedział [0 , T]
-#define L1 2.5 // liczba okresów sygnału sinus w przedziale T
 #define PI 3.14159265 // liczba PI
+#define T 10.0		// czas trwania sygnałów
 
 // zmienne globalne w programie
-double M; // amplituda sygnału
+double M, L1; // amplituda sygnału, czas trwania i liczba okresów
 double u[(int)(1.0 * T / h) + 1]; // sygnał wejściowy
 double u1p[(int)(1.0 * T / h) + 1]; // pierwsza pochodna sygnału wejściowego
 double y_theta[(int)(1.0 * T / h) + 1]; // sygnał wyjściowy theta
@@ -51,11 +50,10 @@ int main()
 	b1_i = (1 / L);//0.2
 	total = sizeof(u) / sizeof(u[0]); // rozmiar wektorów danych
 	w = 2.0 * PI * L1 / T; // częstotliwość sinusoidy
-
+	cout <<"\nPodaj amplitude sygnalu: "; cin >> M;
 	switch (pobudzenie) {// sygnały wejściowe
 	case 1://Prostokątny okresowy
-	
-	cout <<"\nPodaj amplitude sygnalu: "; cin >> M;
+		cout << "\nPodaj liczbę okresów: "; cin >> L1;
 		for (i = 0; i < total; i++) 
 		{
 			if ((i * h) - floor(i * h / (T / L1)) * T / L1 < (T / L1) / 2) // sprawdza który to okres zaokrąglając w dół mnoży razy okres i sprawdza czy po odjęciu tego od obecnego czasu czy mieści się w obszarze wartości pozytywnych 
@@ -76,7 +74,7 @@ int main()
 		}
 		break;
 	case 2://Sinusoida
-	cout <<"\nPodaj amplitude sygnalu: "; cin >> M;
+		cout << "\nPodaj liczbę okresów: "; cin >> L1;
 		for (i = 0; i < total; i++) // sygnał wejściowy i jego pochodne
 		{
 			u[i] = M * sin(w * i * h); // sygnał wejściowy: u=M*sin(w*t) , t=i*
@@ -85,7 +83,7 @@ int main()
 		}
 		break;
 	case 3://1 Impuls prostokątny
-	cout <<"\nPodaj amplitude sygnalu: "; cin >> M;
+	
 		t1 = 2;
 		t2 = 1;
 		while (t1 > t2)
@@ -117,7 +115,7 @@ int main()
 		}
 		break;
 	case 4://1 Impuls trójkątny
-	cout <<"\nPodaj amplitude sygnalu: "; cin >> M;
+	
 		t1 = 2;
 		t2 = 1;
 		while (t1 > t2)
@@ -160,7 +158,7 @@ int main()
 		}
 		break;
 	case 5://Trójkątny okresowy
-	cout <<"\nPodaj amplitude sygnalu: "; cin >> M;
+		cout << "\nPodaj liczbę okresów: "; cin >> L1;
 		double period = T / L1; // period of the triangular wave
 		double half_period = period / 2; // half period of the triangular wave
 		double slope = 2 * M / half_period; // slope of the triangular wave
